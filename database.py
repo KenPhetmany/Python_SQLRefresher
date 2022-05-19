@@ -3,7 +3,7 @@ from mysql.connector import Error
 import pandas as pd
 
 
-def create_server_connection(host_name, user_name, user_password, db):
+def create_db_connection(host_name, user_name, user_password, db):
     connection = None
     try:
         connection = mysql.connector.connect(
@@ -38,11 +38,8 @@ def execute_query(connection, query):
         print(f"Error: '{err}'")
 
 
-connection = create_server_connection(
-    "localhost", "root", "Leonandken123!", "school")
-create_database(connection, execute_query)
+connection = create_db_connection(
+    "localhost", "root", "KenPhetmanyDev", "school")
 
-# execute_query(connection, create_teacher_table)  Execute our defined query
-execute_query(connection, create_client_table)
-execute_query(connection, create_participant_table)
-execute_query(connection, create_course_table)
+connection = create_db_connection(
+    "localhost", "root", "KenPhetmanyDev", "school")
