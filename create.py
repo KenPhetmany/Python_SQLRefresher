@@ -43,3 +43,9 @@ CREATE TABLE course (
   client INT
 );
 """
+
+
+connection = create_db_connection("localhost", "root", pw, db)
+execute_query(connection, create_client_table)
+execute_query(connection, create_participant_table)
+execute_query(connection, create_course_table)

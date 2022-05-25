@@ -28,6 +28,8 @@ CREATE TABLE takes_course (
   FOREIGN KEY(course_id) REFERENCES course(course_id) ON DELETE CASCADE
 );
 """
+
+connection = create_db_connection("localhost", "root", pw, db)
 execute_query(connection, alter_participant)
 execute_query(connection, alter_course)
 execute_query(connection, alter_course_again)
