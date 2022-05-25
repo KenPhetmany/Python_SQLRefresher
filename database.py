@@ -1,3 +1,4 @@
+from sqlite3 import Cursor
 import mysql.connector
 from mysql.connector import Error
 import pandas as pd
@@ -12,7 +13,7 @@ def create_db_connection(host_name, user_name, user_password, db):
             passwd=user_password,
             database=db
         )
-        print("MySQL Database connection successful")
+        print("MySQL Database connection successful \n")
     except Error as err:
         print(f"Error: '{err}'")
 
@@ -38,8 +39,12 @@ def execute_query(connection, query):
         print(f"Error: '{err}'")
 
 
-connection = create_db_connection(
-    "localhost", "root", "KenPhetmanyDev", "school")
-
-connection = create_db_connection(
-    "localhost", "root", "KenPhetmanyDev", "school")
+def read_query(connection, query):
+    cursor = connection.cursor()
+    result = None
+    try:
+        cursor.execute(query)
+        result = cursor.fetchall()
+        return result
+    except Error as err:
+        print(f"Error: '{err}'")
